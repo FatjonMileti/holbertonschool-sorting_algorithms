@@ -9,7 +9,7 @@ void selection_sort(int *array, size_t size)
 	size_t i, j;
 	int tmp;
 
-	for (i = 0; i < size -1; i++)
+	for (i = 0; i < size - 1; i++)
 	{
 		size_t min = i;
 
@@ -23,7 +23,7 @@ void selection_sort(int *array, size_t size)
 			tmp = array[i];
 			array[i] = array[min];
 			array[min] = tmp;
-			print_array(array,size);
+			print_array(array, size);
 		}
 	}
 }
