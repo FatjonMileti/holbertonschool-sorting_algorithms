@@ -1,18 +1,19 @@
 #include "sort.h"
 /**
- *
- *
+ * insertion_sort_list - ...
+ * @list: list
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *cur = (*list)->next;
+	listint_t *cur = NULL;
 
 	if (list == NULL)
 		return;
+	cur = (*list)->next;
 
 	while (cur != NULL)
 	{
-		while (cur->n < cur->prev->n && cur->prev != NULL)
+		while (cur->prev != NULL && cur->prev->n > cur->n)
 		{
 			cur->prev->next = cur->next;
 			if (cur->next != NULL)
