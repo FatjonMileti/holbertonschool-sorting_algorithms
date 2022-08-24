@@ -51,7 +51,6 @@ int partition(int *array, int start, int end, size_t size)
 			print_array(array, size);
 		}
 	}
-	i++;
 	if (array[end] < array[i - 1])
 	{
 		temp = array[i];
@@ -59,5 +58,6 @@ int partition(int *array, int start, int end, size_t size)
 		array[end] = temp;
 		print_array(array, size);
 	}
+	i++;
 	return (i);
 }
