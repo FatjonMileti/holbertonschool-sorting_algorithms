@@ -37,27 +37,30 @@ void recursive_func(int *array, int start, int end, size_t size)
  */
 int partition(int *array, int start, int end, size_t size)
 {
-	int pivot = array[end];
-	int i = start - 1, j, temp;
+	int pivot = array[end], temp;
+	int i = start - 1, j;
 
 	for (j = start; j < end; j++)
 	{
 		if (array[j] <= pivot)
 		{
 			i++;
-			temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-			print_array(array, size);
+			if (i != j)
+			{
+				temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+				print_array(array, size);
+			}
 		}
 	}
-	if (array[end] < array[i - 1])
+	i++;
+	if (array[end] < array[i])
 	{
 		temp = array[i];
 		array[i] = array[end];
 		array[end] = temp;
 		print_array(array, size);
 	}
-	i++;
 	return (i);
 }
