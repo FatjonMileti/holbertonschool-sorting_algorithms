@@ -6,6 +6,8 @@
  */
 void quick_sort(int *array, size_t size)
 {
+	if (array == NULL || size < 2)
+		return;
 	recursive_func(array, 0, size - 1, size);
 }
 /**
@@ -36,23 +38,26 @@ void recursive_func(int *array, int start, int end, size_t size)
 int partition(int *array, int start, int end, size_t size)
 {
 	int pivot = array[end];
-	int partition_index = start;
-	int temp, i;
+	int i = start - 1, j, temp;
 
-	for (i = start; i < end; i++)
+	for (j = start; j < end; j++)
 	{
-		if (array[i] <= pivot)
+		if (array[j] <= pivot)
 		{
+			i++;
 			temp = array[i];
-			array[i] = array[partition_index];
-			array[partition_index] = temp;
-			partition_index++;
+			array[i] = array[j];
+			array[j] = temp;
 			print_array(array, size);
 		}
 	}
-	temp = array[partition_index];
-	array[partition_index] = array[end];
-	array[end] = temp;
-	print_array(array, size);
-	return (partition_index);
+	i++;
+	if (array[end] < array[i - 1])
+	{
+		temp = array[i];
+		array[i] = array[end];
+		array[end] = temp;
+		print_array(array, size);
+	}
+	return (i);
 }
