@@ -7,15 +7,21 @@ void merge_sort(int *array, size_t size)
 {
 	int *temp;
 
+	if (array == NULL || size < 2)
+                return;
+
 	temp = malloc(sizeof( *temp) * size);
 	if (temp == NULL)
 		return;
 
-	if (array == NULL || size < 2)
-		return;
+
 	sort(array,temp, size);
 	free(temp);
 }
+/**
+ *
+ */
+ 
 void sort(int *array, int *temp, size_t size)
 {
 	size_t i, j, k, mid;
