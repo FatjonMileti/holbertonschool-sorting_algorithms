@@ -1,6 +1,8 @@
 #include "sort.h"
 /**
- *
+ * merge_sort - ...
+ * @array: ...
+ * @size: ...
  */
 
 void merge_sort(int *array, size_t size)
@@ -8,27 +10,29 @@ void merge_sort(int *array, size_t size)
 	int *temp;
 
 	if (array == NULL || size < 2)
-                return;
+		return;
 
-	temp = malloc(sizeof( *temp) * size);
+	temp = malloc(sizeof(*temp) * size);
 	if (temp == NULL)
 		return;
 
-
-	sort(array,temp, size);
+	sort(array, temp, size);
 	free(temp);
 }
 /**
- *
+ * sort - ...
+ * @array: ...
+ * @size: ...
+ * @temp: ...
  */
- 
+
 void sort(int *array, int *temp, size_t size)
 {
 	size_t i, j, k, mid;
 
 	mid = size / 2;
 	i = 0;
-       	j = 0;
+	j = 0;
 
 	if (size < 2)
 		return;
@@ -40,7 +44,7 @@ void sort(int *array, int *temp, size_t size)
 	printf("[right]: ");
 	print_array(array + mid, size - mid);
 
-	for(k = 0; k < size; k++)
+	for (k = 0; k < size; k++)
 	{
 		if (j >= size - mid || (i < mid && array[i] < (array + mid)[j]))
 		{
@@ -53,11 +57,10 @@ void sort(int *array, int *temp, size_t size)
 			j++;
 		}
 	}
-	for(k = 0; k < size; k++)
+	for (k = 0; k < size; k++)
 	{
 		array[k] = temp[k];
 	}
-	
 	printf("[Done]: ");
 	print_array(array, size);
 }
